@@ -41,10 +41,10 @@ const Header = () => {
 
                 {/* User Action Buttons */}
                 <div className="hidden md:flex items-center gap-4">
-                    <Link to="/signin">
+                    <Link to="/signup">
                         <button className="flex items-center text-white bg-red-500 hover:bg-red-600 py-2 px-4 rounded-full transition duration-300">
                             <FaSignInAlt className="mr-2" />
-                            <span>Sign In</span>
+                            <span>Sign up</span>
                         </button>
                     </Link>
                 </div>

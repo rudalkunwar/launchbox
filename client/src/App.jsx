@@ -1,8 +1,20 @@
 import React from 'react'
+import Home from './pages/Home'
+import { Route, Router, Routes } from 'react-router-dom'
+import Header from './components/navs/Header'
 
 function App() {
   return (
-    <div className='h-screen flex justify-center items-center bg-gray-200'>App</div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/menu" element={<Menu />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/signin" element={<SignIn />} /> */}
+      </Routes>
+    </>
   )
 }
 

@@ -1,15 +1,17 @@
-require("dotenv").config();
-
-const express = require("express");
+require("dotenv").config(); // Load environment variables
 const mongoose = require("mongoose");
+const app = require("./src/app"); // Import the app.js from src
 
-const app = express();
-
+// Connect to MongoDB
 mongoose
   .connect(process.env.DB_URL)
-  .then((result) => {
+  .then(() => {
     console.log("Connected to the database.");
-    app.listen(process.env.PORT);
-    console.log("Server started at port: " + process.env.PORT);
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
   })
-  .catch((error) => console.log("Unable to Connect to Database"));
+  .catch((error) => {
+    console.error("Database connection failed:", error);
+  });

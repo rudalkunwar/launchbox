@@ -1,17 +1,18 @@
 import React from 'react';
 import { FaUser, FaEnvelope, FaLock, FaRegCheckCircle } from 'react-icons/fa';
 import { FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
         <section className="flex flex-col md:flex-row h-screen items-center bg-gray-50">
             {/* Left Image Section */}
-            <div className="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-                <img className="object-cover  w-full h-full" src="https://img.freepik.com/premium-photo/food-day_1275925-3918.jpg?w=740" alt="Sign Up Background"  />
+            <div className="hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+                <img className="object-cover  w-full h-full" src="https://img.freepik.com/premium-photo/food-day_1275925-3918.jpg?w=740" alt="Sign Up Background" />
             </div>
 
             {/* Right Sign Up Form Section */}
-            <div className="bg-indigo-400 w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
+            <div className="w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
                 <div className="w-full h-100">
                     <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Create your account</h1>
 
@@ -81,7 +82,7 @@ const SignUp = () => {
                             <span className="ml-4">Log in with Google</span>
                         </div>
                     </button>
-                    <p className="mt-8 text-center">Already have an account? <a href="#" className="text-blue-500 hover:text-blue-700 font-semibold">Log in</a></p>
+                    <p className="mt-8 text-center">Already have an account? <Link to="/login" className="text-blue-500 hover:text-blue-700 font-semibold">Log in</Link></p>
                 </div>
             </div>
         </section>

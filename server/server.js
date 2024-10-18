@@ -1,7 +1,15 @@
-require("dotenv").config(); // Load environment variables
+require("dotenv").config();
 const mongoose = require("mongoose");
-const app = require("./src/app"); // Import the app.js from src
+const app = require("./src/app");
+const cors = require("cors");
 
+//configure cors
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 // Connect to MongoDB
 mongoose
   .connect(process.env.DB_URL)

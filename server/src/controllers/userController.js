@@ -2,7 +2,7 @@ const User = require("../models/User");
 
 const user_register = async (req, res) => {
   try {
-    console.log(req);
+    console.log(req.body);
   } catch (error) {
     console.error(error);
   }

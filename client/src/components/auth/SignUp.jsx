@@ -2,12 +2,26 @@ import React from 'react';
 import { FaUser, FaEnvelope, FaLock, FaRegCheckCircle } from 'react-icons/fa';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import apiClient from '../../services/api'
 const SignUp = () => {
 
-
-
-
+    const userSignup = async (e) => {
+        e.preventDefault();
+        const username = e.target.username.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(username);
+        try {
+            const response = await apiClient.get('users/register', {
+                username, email, password
+            });
+            if (response) {
+                console.log(response.data);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     return (
         <section className="flex flex-col md:flex-row h-screen items-center bg-gray-50">
@@ -28,6 +42,7 @@ const SignUp = () => {
                                 <input
                                     type="text"
                                     id="name"
+                                    name='username'
                                     placeholder="Enter your full name"
                                     className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
                                     required
@@ -41,6 +56,7 @@ const SignUp = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    name='email'
                                     placeholder="Enter your email"
                                     className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
                                     required
@@ -54,6 +70,7 @@ const SignUp = () => {
                                 <input
                                     type="password"
                                     id="password"
+                                    name='password'
                                     placeholder="Create a password"
                                     minLength="6"
                                     className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
@@ -68,6 +85,7 @@ const SignUp = () => {
                                 <input
                                     type="password"
                                     id="confirmPassword"
+                                    name="confirmPassword"
                                     placeholder="Confirm your password"
                                     minLength="6"
                                     className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"

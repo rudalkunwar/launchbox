@@ -4,6 +4,11 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+
+
+
+
+
     return (
         <section className="flex flex-col md:flex-row h-screen items-center bg-gray-50">
             {/* Left Image Section */}
@@ -16,7 +21,7 @@ const SignUp = () => {
                 <div className="w-full h-100">
                     <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Create your account</h1>
 
-                    <form className="mt-6" action="#" method="POST">
+                    <form className="mt-6" method="POST" onSubmit={userSignup}>
                         <div>
                             <label className="block text-gray-700" htmlFor="name">Full Name</label>
                             <div className="flex items-center border-b border-gray-300 focus:border-blue-500">

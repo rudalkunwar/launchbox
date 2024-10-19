@@ -12,7 +12,7 @@ const SignUp = () => {
         const password = e.target.password.value;
         console.log(username);
         try {
-            const response = await apiClient.get('users/register', {
+            const response = await apiClient.post('users/register', {
                 username, email, password
             });
             if (response) {

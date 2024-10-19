@@ -6,8 +6,8 @@ const cors = require("cors");
 //configure cors
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "*",
+    methods: ["*"],
   })
 );
 // Connect to MongoDB

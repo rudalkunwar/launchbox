@@ -1,111 +1,68 @@
 import React from 'react';
-import { FaUser, FaEnvelope, FaLock, FaRegCheckCircle } from 'react-icons/fa';
-import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaPizzaSlice } from 'react-icons/fa';
 import apiClient from '../../services/api'
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 const SignUp = () => {
 
     const userSignup = async (e) => {
         e.preventDefault();
-        const username = e.target.username.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        console.log(username);
-        try {
-            const response = await apiClient.post('users/register', {
-                username, email, password
+        const name = e.target[0].value;
+        const email = e.target[1].value;
+        const password = e.target[2].value;
+        const confirmPassword = e.target[3].value;
+
+        if (password != confirmPassword) {
+            toast.warn('password doesnot match', {
             });
-            if (response) {
-                console.log(response.data);
-            }
-        } catch (e) {
-            console.log(e);
         }
     }
 
     return (
-        <section className="flex flex-col md:flex-row h-screen items-center bg-gray-50">
-            {/* Left Image Section */}
-            <div className="hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-                <img className="object-cover  w-full h-full" src="https://img.freepik.com/premium-photo/food-day_1275925-3918.jpg?w=740" alt="Sign Up Background" />
-            </div>
-
-            {/* Right Sign Up Form Section */}
-            <div className="w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
-                <div className="w-full h-100">
-                    <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Create your account</h1>
-
-                    <form className="mt-6" method="POST" onSubmit={userSignup}>
-                        <div>
-                            <label className="block text-gray-700" htmlFor="name">Full Name</label>
-                            <div className="flex items-center border-b border-gray-300 focus:border-blue-500">
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name='username'
-                                    placeholder="Enter your full name"
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
-                                    required
-                                />
+        <section className="bg-gray-50 dark:bg-gray-900">
+            <ToastContainer />
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                    <FaPizzaSlice />
+                    <span className='px-2'>LaunchBox</span>
+                </a>
+                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            Create an account
+                        </h1>
+                        <form className="space-y-4 md:space-y-6" onSubmit={userSignup}>
+                            <div>
+                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+                                <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" required />
                             </div>
-                        </div>
-
-                        <div className="mt-4">
-                            <label className="block text-gray-700" htmlFor="email">Email Address</label>
-                            <div className="flex items-center border-b border-gray-300 focus:border-blue-500">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name='email'
-                                    placeholder="Enter your email"
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
-                                    required
-                                />
+                            <div>
+                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                                <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required />
                             </div>
-                        </div>
-
-                        <div className="mt-4">
-                            <label className="block text-gray-700" htmlFor="password">Password</label>
-                            <div className="flex items-center border-b border-gray-300 focus:border-blue-500">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name='password'
-                                    placeholder="Create a password"
-                                    minLength="6"
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
-                                    required
-                                />
+                            <div>
+                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                             </div>
-                        </div>
-
-                        <div className="mt-4">
-                            <label className="block text-gray-700" htmlFor="confirmPassword">Confirm Password</label>
-                            <div className="flex items-center border-b border-gray-300 focus:border-blue-500">
-                                <input
-                                    type="password"
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    placeholder="Confirm your password"
-                                    minLength="6"
-                                    className="w-full px-4 py-3 rounded-lg bg-gray-200 focus:outline-none"
-                                    required
-                                />
+                            <div>
+                                <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                                <input type="password" name="confirmPassword" id="confirm-password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                             </div>
-                        </div>
-
-                        <button type="submit" className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">Sign Up</button>
-                    </form>
-                    <hr className="my-6 border-gray-300 w-full" />
-
-                    {/* Google Login Button */}
-                    <button type="button" className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
-                        <div className="flex items-center justify-center">
-                            <FaGoogle className="w-6 h-6" />
-                            <span className="ml-4">Log in with Google</span>
-                        </div>
-                    </button>
-                    <p className="mt-8 text-center">Already have an account? <Link to="/login" className="text-blue-500 hover:text-blue-700 font-semibold">Log in</Link></p>
+                            {/* <div className="flex items-start">
+                                <div className="flex items-center h-5">
+                                    <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+                                </div>
+                                <div className="ml-3 text-sm">
+                                    <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">I accept the <a className="font-medium text-blue-600 hover:underline dark:text-blue-500" href="#">Terms and Conditions</a></label>
+                                </div>
+                            </div> */}
+                            <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create an account</button>
+                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                                Already have an account? <Link to="/login" className="font-medium text-blue-600 hover:underline dark:text-blue-500">Login here</Link>
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>

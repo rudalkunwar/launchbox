@@ -5,7 +5,7 @@ import Header from './components/navs/Header'
 // import SignIn from './components/auth/SignIn'
 import LogIn from './components/auth/LogIn'
 import SignUp from './components/auth/SignUp'
-
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>

@@ -1,15 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const app = require("./src/app");
-const cors = require("cors");
 
-//configure cors
-app.use(
-  cors({
-    origin: "*",
-    methods: ["*"],
-  })
-);
 // Connect to MongoDB
 mongoose
   .connect(process.env.DB_URL)

@@ -1,8 +1,7 @@
 const User = require("../models/User");
-
 const user_register = async (req, res) => {
   try {
-    console.log(req.body);
+    const { name, email, password } = { ...req.body };
   } catch (error) {
     console.error(error);
   }

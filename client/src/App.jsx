@@ -6,10 +6,13 @@ import Header from './components/navs/Header'
 import LogIn from './components/auth/LogIn'
 import SignUp from './components/auth/SignUp'
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 function App() {
   return (
     <>
       <Header />
+      <ToastContainer />
+
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/menu" element={<Menu />} />

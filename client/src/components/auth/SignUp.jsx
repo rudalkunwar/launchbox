@@ -3,7 +3,6 @@ import { FaPizzaSlice } from 'react-icons/fa';
 import apiClient from '../../services/api'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
 import BeatLoader from "react-spinners/BeatLoader";
 const SignUp = () => {
     const [isLoading, setLoading] = useState(false);

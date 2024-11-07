@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import { FaPizzaSlice } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
+import apiClient from '../../services/api'
+
 function LogIn() {
     const [isLoading, setLoading] = useState(false);
     const userSignup = async (e) => {
         e.preventDefault();
         setLoading(true);
-        const email = e.target[1].value;
-        const password = e.target[2].value;
+        const email = e.target[0].value;
+        const password = e.target[1].value;
         try {
             const respose = await apiClient.post('/login', {
                 email, password
@@ -17,13 +20,14 @@ function LogIn() {
             if (respose) {
                 toast.success('register complete');
             } else {
+                console.log(res);
                 toast.error('failed to register');
                 setLoading(false);
             }
         } catch (e) {
+            console.log(e);
             toast.error('failed to register');
             setLoading(false);
-
         }
     }
 
@@ -51,7 +55,7 @@ function LogIn() {
                             <div>
                                 <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     {
-                                        isLoading ? (<BeatLoader size={10} />) : (<span>Create an account</span>)
+                                        isLoading ? (<BeatLoader size={10} />) : (<span>Login</span>)
                                     }
                                 </button>
                             </div>

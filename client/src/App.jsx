@@ -7,10 +7,11 @@ import LogIn from './components/auth/LogIn'
 import SignUp from './components/auth/SignUp'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
+import Sidebar from './components/admin/layouts/Sidebar'
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <ToastContainer />
 
       <Routes>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />*/}
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/admin" element={<Sidebar />} />
       </Routes>
     </>
   )
